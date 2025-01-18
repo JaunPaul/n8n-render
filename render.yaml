@@ -2,8 +2,8 @@ services:
   - type: web
     name: n8n
     env: docker
-    region: oregon # optional (defaults to oregon)
-    plan: standard # optional (defaults to starter)
+    region: frankfurt # optional (defaults to oregon)
+    plan: starter # optional (defaults to starter)
     branch: main # optional (defaults to master)
     # dockerCommand: ./webdis.sh # optional (defaults to Dockerfile command)
     numInstances: 1
@@ -11,29 +11,29 @@ services:
     envVars:
       - key: PGHOST
         fromDatabase:
-          name: n8nDB
+          name: n8ndb
           property: host
       - key: PGDATABASE
         fromDatabase:
-          name: n8nDB
+          name: n8ndb
           property: database
       - key: PGPORT
         fromDatabase:
-          name: n8nDB
+          name: n8ndb
           property: port
       - key: PGUSER
         fromDatabase:
-          name: n8nDB
+          name: n8ndb
           property: user
       - key: PGPASSWORD
         fromDatabase:
-          name: n8nDB
+          name: n8ndb
           property: password
     disk:
       name: n8nDisk
       mountPath: /home/node/.n8n
-      sizeGB: 10
+      sizeGB: 1
 
 databases:
-  - name: n8nDB
+  - name: n8ndb
     plan: starter
